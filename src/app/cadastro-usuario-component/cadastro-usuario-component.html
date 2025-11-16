@@ -1,0 +1,122 @@
+<!-- Formulário de Cadastro -->
+<section class="cadastro-section mb-5">
+    <h2 class="section-title">{{ getTituloFormulario() }}</h2>
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="usuarioForm" class="row g-3" (ngSubmit)="onSubmit()">
+                <!-- Nome -->
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Nome Completo</label>
+                    <input formControlName="name" type="text" class="form-control" id="name" 
+                           placeholder="Digite o nome completo" 
+                           [class.is-invalid]="usuarioForm.get('name')?.invalid && usuarioForm.get('name')?.touched">
+                    <div class="invalid-feedback" *ngIf="usuarioForm.get('name')?.errors?.['required'] && usuarioForm.get('name')?.touched">
+                        Nome é obrigatório
+                    </div>
+                </div>
+                
+                <!-- Idade -->
+                <div class="col-md-3">
+                    <label for="age" class="form-label">Idade</label>
+                    <input formControlName="age" type="number" class="form-control" id="age" 
+                           placeholder="Idade" min="1" max="120"
+                           [class.is-invalid]="usuarioForm.get('age')?.invalid && usuarioForm.get('age')?.touched">
+                    <div class="invalid-feedback" *ngIf="usuarioForm.get('age')?.errors?.['required'] && usuarioForm.get('age')?.touched">
+                        Idade é obrigatória
+                    </div>
+                    <div class="invalid-feedback" *ngIf="usuarioForm.get('age')?.errors?.['min'] || usuarioForm.get('age')?.errors?.['max']">
+                        Idade deve ser entre 1 e 120 anos
+                    </div>
+                </div>
+
+                <!-- Tipo de Servidor -->
+                <div class="col-md-3">
+                    <label for="role" class="form-label">Função</label>
+                    <select formControlName="role" class="form-select" id="role"
+                            [class.is-invalid]="usuarioForm.get('role')?.invalid && usuarioForm.get('role')?.touched">
+                        <option value="" selected>Selecione a função</option>
+                        <option value="ACOLYTE">Acólito</option>
+                        <option value="ALTAR_SERVER">Coroinha</option>
+                    </select>
+                    <div class="invalid-feedback" *ngIf="usuarioForm.get('role')?.errors?.['required'] && usuarioForm.get('role')?.touched">
+                        Função é obrigatória
+                    </div>
+                </div>
+
+                <!-- Botões -->
+                <div class="col-12 text-end mt-4">
+                    <button type="button" class="btn btn-secondary me-2" 
+                            id="btnCancelar" 
+                            style="display: none;"
+                            (click)="cancelarEdicao()">
+                        <i class="fas fa-times me-2"></i>Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-cadastrar" 
+                            [disabled]="usuarioForm.invalid">
+                        <i class="fas fa-user-plus me-2"></i>{{ getBotaoTexto() }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- Lista de Servidores Cadastrados -->
+<section class="usuarios-section">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="section-title">Servidores Litúrgicos Cadastrados</h2>
+        <div class="filtros d-flex gap-2">
+            <div class="input-group" style="width: 300px;">
+                <input type="text" class="form-control" 
+                       placeholder="Buscar servidores..." 
+                       (input)="onSearchChange($any($event.target).value)">
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <select class="form-select" style="width: 200px;"
+                    (change)="onFilterChange($any($event.target).value)">
+                <option value="todos" selected>Todas as Funções</option>
+                <option value="ACOLYTE">Acólito</option>
+                <option value="ALTAR_SERVER">Coroinha</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover usuarios-table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Função</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let server of serversFiltrados">
+                    <td>{{ server.name }}</td>
+                    <td>{{ server.age }}</td>
+                    <td>{{ traduzirRole(server.role) }}</td>
+                    <td>
+                        <button class="btn btn-acao-tabela btn-editar me-2"
+                                (click)="editarServer(server)">
+                            <i class="fas fa-edit me-1"></i>Editar
+                        </button>
+                        <button class="btn btn-acao-tabela btn-excluir"
+                                (click)="excluirServer(server)">
+                            <i class="fas fa-trash me-1"></i>Excluir
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="serversFiltrados.length === 0">
+                    <td colspan="4" class="text-center text-muted py-4">
+                        Nenhum servidor litúrgico encontrado.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

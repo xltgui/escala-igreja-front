@@ -1,0 +1,315 @@
+<!-- Seleção do Tipo de Criação -->
+<section class="tipo-criacao-section mb-4" *ngIf="showSelection">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="section-title mb-4">Como deseja criar as missas?</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card tipo-criacao-card" 
+                         [class.active]="currentMode === 'individual'"
+                         (click)="alternarModo('individual')">
+                         <div class="card-body text-center">
+                            <i class="fas fa-plus-circle fa-3x text-primary mb-3"></i>
+                            <h5>Criação Individual</h5>
+                            <p class="text-muted">Crie uma missa por vez com configurações específicas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card tipo-criacao-card" 
+                         [class.active]="currentMode === 'bloco'"
+                         (click)="alternarModo('bloco')">
+                        <div class="card-body text-center">
+                            <i class="fas fa-layer-group fa-3x text-success mb-3"></i>
+                            <h5>Criação em Bloco</h5>
+                            <p class="text-muted">Crie múltiplas missas para o mês todo com horários padrão</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formulário Individual -->
+<section class="cadastro-section mb-5" *ngIf="!showSelection && currentMode === 'individual'">
+    <h2 class="section-title">Criação de Missa Individual</h2>
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="missaIndividualForm" class="row g-3" (ngSubmit)="criarMissaIndividual()">
+                <!-- ... campos do formulário com formControlName ... -->
+                 <div class="col-md-6">
+                            <label for="dataMissa" class="form-label">Data da Missa</label>
+                            <input type="date" class="form-control" id="dataMissa" formControlName="dataMissa" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="horarioMissa" class="form-label">Horário</label>
+                            <input type="time" class="form-control" id="horarioMissa" formControlName="horarioMissa" required>
+                        </div>
+                
+                <!-- Selects para coroinhas -->
+                <div class="col-md-6" *ngFor="let i of [1,2,3,4]">
+                    <label [for]="'coroinha' + i" class="form-label">Coroinha {{i}}</label>
+                    <select [formControlName]="'coroinha' + i" class="form-select" [id]="'coroinha' + i">
+                        <option value="">Selecione Coroinha</option>
+                        <option *ngFor="let coroinha of coroinhas" [value]="coroinha.id">
+                            {{coroinha.name}}
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Funções Padrão -->
+                        <div class="col-12">
+                            <h5 class="mb-3">Funções Padrão</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6" *ngFor="let i of [1,2]">
+                                    <label [for]="'vela' + i" class="form-label">Vela {{i}}</label>
+                                    <select [formControlName]="'vela' + i" class="form-select" [id]="'vela' + i">
+                                        <option value="">Selecione Vela</option>
+                                        <option *ngFor="let acolito of acolitos" [value]="acolito.id">
+                                            {{acolito.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="missalPadrao" class="form-label">Missal</label>
+                                    <select class="form-select" id="missalPadrao" formControlName="missal">
+                                        <option value="" selected>Selecione Missal</option>
+                                        <option *ngFor="let acolito of acolitos" [value]="acolito.id">
+                                            {{acolito.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="turibuloPadrao" class="form-label">Turíbulo</label>
+                                    <select class="form-select" id="turibuloPadrao" formControlName="turibulo">
+                                        <option value="" selected>Selecione Turíbulo</option>
+                                        <option *ngFor="let acolito of acolitos" [value]="acolito.id">
+                                            {{acolito.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="navetaPadrao" class="form-label">Naveta</label>
+                                    <select class="form-select" id="navetaPadrao" formControlName="naveta">
+                                        <option value="" selected>Selecione Naveta</option>
+                                        <option *ngFor="let acolito of acolitos" [value]="acolito.id">
+                                            {{acolito.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- Botões -->
+                <div class="col-12 text-end mt-4">
+                    <button type="button" class="btn btn-secondary me-2" (click)="voltarParaSelecao()">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar
+                    </button>
+                    <button type="submit" class="btn btn-cadastrar" >
+                        <i class="fas fa-plus me-2"></i>Criar Missa
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="cadastro-section mb-5" id="criacaoBloco" *ngIf="!showSelection && currentMode === 'bloco'">
+            <h2 class="section-title">Criação de Missas em Bloco</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3" id="formMissaBloco">
+                        <!-- Configurações do Mês -->
+                        <div class="col-md-4">
+                            <label for="mesSelecionado" class="form-label">Mês</label>
+                            <select class="form-select" id="mesSelecionado" required>
+                                <option value="">Selecione o mês</option>
+                                <option value="0">Janeiro</option>
+                                <option value="1">Fevereiro</option>
+                                <option value="2">Março</option>
+                                <option value="3">Abril</option>
+                                <option value="4">Maio</option>
+                                <option value="5">Junho</option>
+                                <option value="6">Julho</option>
+                                <option value="7">Agosto</option>
+                                <option value="8">Setembro</option>
+                                <option value="9">Outubro</option>
+                                <option value="10">Novembro</option>
+                                <option value="11">Dezembro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="anoSelecionado" class="form-label">Ano</label>
+                            <input type="number" class="form-control" id="anoSelecionado" min="2024" max="2030" value="2024" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tipoMissas" class="form-label">Tipo de Missas</label>
+                            <select class="form-select" id="tipoMissas" required>
+                                <option value="domingo">Apenas Domingos</option>
+                                <option value="sabado_domingo">Sábados e Domingos</option>
+                                <option value="todos_dias">Todos os Dias</option>
+                            </select>
+                        </div>
+
+                        <!-- Horários Padrão -->
+                        <div class="col-12">
+                            <h5 class="mb-3">Horários Padrão</h5>
+                            <div class="row" id="horariosPadrao">
+                                <!-- Horários serão gerados dinamicamente -->
+                            </div>
+                        </div>
+
+                        <!-- Equipe Padrão -->
+                        <div class="col-12">
+                            <h5 class="mb-3">Equipe Padrão</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="coroinhaPadrao1" class="form-label">Coroinha 1</label>
+                                    <select class="form-select" id="coroinhaPadrao1">
+                                        <option value="" selected>Selecione Coroinha</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="coroinhaPadrao2" class="form-label">Coroinha 2</label>
+                                    <select class="form-select" id="coroinhaPadrao2">
+                                        <option value="" selected>Selecione Coroinha</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="coroinhaPadrao3" class="form-label">Coroinha 3</label>
+                                    <select class="form-select" id="coroinhaPadrao3">
+                                        <option value="" selected>Selecione Coroinha</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="coroinhaPadrao4" class="form-label">Coroinha 4</label>
+                                    <select class="form-select" id="coroinhaPadrao4">
+                                        <option value="" selected>Selecione Coroinha</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Funções Padrão -->
+                        <div class="col-12">
+                            <h5 class="mb-3">Funções Padrão</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="velaPadrao1" class="form-label">Vela 1</label>
+                                    <select class="form-select" id="velaPadrao1">
+                                        <option value="" selected>Selecione Vela</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="velaPadrao2" class="form-label">Vela 2</label>
+                                    <select class="form-select" id="velaPadrao2">
+                                        <option value="" selected>Selecione Vela</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="missalPadrao" class="form-label">Missal</label>
+                                    <select class="form-select" id="missalPadrao">
+                                        <option value="" selected>Selecione Missal</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="turibuloPadrao" class="form-label">Turíbulo</label>
+                                    <select class="form-select" id="turibuloPadrao">
+                                        <option value="" selected>Selecione Turíbulo</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="navetaPadrao" class="form-label">Naveta</label>
+                                    <select class="form-select" id="navetaPadrao">
+                                        <option value="" selected>Selecione Naveta</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botão Criar Missas em Bloco -->
+                        <div class="col-12 text-center mt-4 mb-4">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-layer-group me-2"></i>Criar Missas em Bloco
+                            </button>
+                        </div>
+
+                        <!-- Preview das Missas -->
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h5>Preview das Missas</h5>
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="gerarPreviewMissas()">
+                                    <i class="fas fa-sync-alt me-1"></i>Atualizar Preview
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-striped" id="tabelaPreview">
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Dia</th>
+                                            <th>Horário</th>
+                                            <th>Coroinhas</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="corpoPreview">
+                                        <!-- Preview será gerado aqui -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Botão Voltar -->
+                        <div class="col-12 text-end mt-4">
+                            <button type="button" class="btn btn-secondary" onclick="voltarParaSelecao()">
+                                <i class="fas fa-arrow-left me-2"></i>Voltar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+<!-- Histórico de Missas -->
+<section class="historico-section">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="section-title">Histórico de Missas Criadas</h2>
+        <div>
+            <button class="btn btn-outline-danger me-2" (click)="removerTodasMissas()">
+                <i class="fas fa-trash-alt me-1"></i>Remover Todas
+            </button>
+            <button class="btn btn-outline-secondary" (click)="carregarHistoricoMissas()">
+                <i class="fas fa-sync-alt me-1"></i>Atualizar
+            </button>
+        </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Data</th>
+                    <th>Dia</th>
+                    <th>Horário</th>
+                    <th>Participantes</th>
+                    <th>Função</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let missa of historicoMissas">
+                    <tr *ngFor="let assignment of missa.assignments | keyvalue; let i = index">
+                        <!-- Mostra dados da missa apenas na primeira linha -->
+                        <td *ngIf="i === 0" [attr.rowspan]="getRowspan(missa.assignments)">{{ formatarData(missa.date) }}</td>
+                        <td *ngIf="i === 0" [attr.rowspan]="getRowspan(missa.assignments)">{{ traduzirDia(missa.day) }}</td>
+                        <td *ngIf="i === 0" [attr.rowspan]="getRowspan(missa.assignments)">{{ formatarHorario(missa.time) }}</td>
+                        
+                        <!-- Dados do assignment -->
+                        <td>{{ assignment.key }}</td>
+                        <td>{{ traduzirFuncao(assignment.value) }}</td>
+                    </tr>
+    </ng-container>
+            </tbody>
+        </table>

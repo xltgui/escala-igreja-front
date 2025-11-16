@@ -1,0 +1,788 @@
+/* Estilos Gerais */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+/* Header */
+.admin-header {
+    background: linear-gradient(135deg, #CC7C1B 0%, #e2b63c 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.admin-header i {
+    font-size: 1.8rem;
+}
+
+/* Botão Sair */
+.btn-sair {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-sair:hover {
+    background: white;
+    color: #CC7C1B;
+    transform: translateY(-2px);
+}
+
+/* Navegação */
+.navigation {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: #495057;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(135deg, #CC7C1B 0%, #e2b63c 100%);
+    color: white;
+    border-color: #CC7C1B;
+    transform: translateY(-2px);
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, #CC7C1B 0%, #e2b63c 100%);
+    color: white;
+    border-color: #CC7C1B;
+}
+
+/* Botões de Ação */
+.botoes-acao {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-acao {
+    background: linear-gradient(135deg, #CC7C1B 0%, #e2b63c 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.btn-acao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(204, 124, 27, 0.4);
+    color: white;
+}
+
+.btn-acao i {
+    font-size: 1.3rem;
+}
+
+/* Seções */
+.escala-section, .cadastro-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid #000000b6;
+    padding-bottom: 0.5rem;
+}
+
+/* Divisor */
+.section-divider {
+    border: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #CC7C1B, transparent);
+    margin: 2rem 0;
+}
+
+/* Botões */
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-outline-primary {
+    border: 2px solid #CC7C1B;
+    color: #CC7C1B;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #CC7C1B;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Tabelas */
+.escala-table, .usuarios-table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.escala-table thead th, .usuarios-table thead th {
+    background: linear-gradient(135deg, #CC7C1B 0%, #e2b63c 100%);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.escala-table tbody td, .usuarios-table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    text-align: center;
+    border-color: #e9ecef;
+}
+
+.escala-table tbody tr:hover, .usuarios-table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Formulário de Cadastro */
+.cadastro-section .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-section .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.cadastro-section .form-control,
+.cadastro-section .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.cadastro-section .form-control:focus,
+.cadastro-section .form-select:focus {
+    border-color: #CC7C1B;
+    box-shadow: 0 0 0 0.2rem rgba(204, 124, 27, 0.25);
+}
+
+.btn-cadastrar {
+    background: linear-gradient(135deg, #CC7C1B 0%, #e2b63c 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-cadastrar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(204, 124, 27, 0.3);
+}
+
+/* Filtros */
+.filtros {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filtros .input-group {
+    border-radius: 8px;
+}
+
+.filtros .form-control {
+    border: 2px solid #e9ecef;
+}
+
+.filtros .form-control:focus {
+    border-color: #CC7C1B;
+    box-shadow: none;
+}
+
+.filtros .input-group-text {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-left: none;
+}
+
+/* Botões de Ação na Tabela */
+.btn-acao-tabela {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+    margin: 0 2px;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-editar {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+}
+
+.btn-editar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-excluir {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+}
+
+.btn-excluir:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+/* Estilo para o botão de busca */
+.btn-outline-secondary {
+    border: 2px solid #e9ecef;
+    border-left: none;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #CC7C1B;
+    border-color: #CC7C1B;
+    color: white;
+}
+
+/* Alinhamento do botão cadastrar */
+.text-end .btn-cadastrar {
+    min-width: 200px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    .admin-header {
+        padding: 1.5rem;
+    }
+    
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn-acao {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .btn-sair {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .filtros {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .filtros .input-group,
+    .filtros .form-select {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+    
+    .btn-acao-tabela {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+/* ========================================== */
+
+/* Estilos específicos para a tela de Criação de Missa */
+
+.cadastro-section .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.cadastro-section .form-control,
+.cadastro-section .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.cadastro-section .form-control:focus,
+.cadastro-section .form-select:focus {
+    border-color: #CC7C1B;
+    box-shadow: 0 0 0 0.2rem rgba(204, 124, 27, 0.25);
+}
+
+.btn-cadastrar {
+    background: linear-gradient(135deg, #CC7C1B 0%, #e2b63c 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.btn-cadastrar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(204, 124, 27, 0.3);
+}
+
+/* Ajustes para os selects */
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+/* Estilo para grupos de campos relacionados */
+.campo-grupo {
+    margin-bottom: 1.5rem;
+}
+
+.campo-grupo-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+/* Destaque para campos obrigatórios */
+.form-label.obrigatorio::after {
+    content: " *";
+    color: #dc3545;
+}
+
+/* Estados de validação */
+.form-control:invalid,
+.form-select:invalid {
+    border-color: #dc3545;
+}
+
+.form-control:valid,
+.form-select:valid {
+    border-color: #28a745;
+}
+
+/* Loading state para o botão */
+.btn-cadastrar.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-cadastrar.loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cadastro-section .card-body {
+        padding: 1rem;
+    }
+    
+    .cadastro-section .row.g-3 {
+        margin: 0;
+    }
+    
+    .cadastro-section .col-md-6 {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-cadastrar {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .campo-grupo-titulo {
+        font-size: 1rem;
+    }
+}
+
+/* Animações suaves */
+.cadastro-section .card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para selects quando há valor selecionado */
+.form-select:not([value=""]) {
+    background-color: #f8f9fa;
+    border-color: #CC7C1B;
+}
+
+/* Tooltip personalizado */
+.tooltip-custom {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-custom .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-custom:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilos para o Histórico de Missas */
+.historico-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.historico-container {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.missa-card {
+    border-left: 4px solid #CC7C1B;
+    transition: all 0.3s ease;
+}
+
+.missa-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.missa-card.border-success {
+    border-left: 4px solid #28a745;
+}
+
+.missa-card .card-title {
+    color: #495057;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.missa-card .card-text {
+    font-size: 0.875rem;
+}
+
+.missa-card h6 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.missa-card ul li {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    color: #6c757d;
+}
+
+/* Badge para missas novas */
+.badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Botão de excluir */
+.btn-outline-danger {
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Mensagens de alerta */
+.alert-success {
+    border-radius: 8px;
+    border: 1px solid #d1e7dd;
+}
+
+/* Scrollbar personalizada */
+.historico-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.historico-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.historico-container::-webkit-scrollbar-thumb {
+    background: #CC7C1B;
+    border-radius: 3px;
+}
+
+.historico-container::-webkit-scrollbar-thumb:hover {
+    background: #b66511;
+}
+
+/* Estados vazios */
+.text-center .fa-inbox {
+    opacity: 0.5;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .historico-section {
+        padding: 1rem;
+    }
+    
+    .missa-card .card-body {
+        padding: 1rem;
+    }
+    
+    .missa-card .row {
+        margin: 0;
+    }
+    
+    .missa-card .col-md-6 {
+        margin-bottom: 1rem;
+    }
+}
+
+
+/* ========================================== */
+/* ESTILOS PARA CARDS CLICÁVEIS */
+/* ========================================== */
+
+.tipo-criacao-card {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.tipo-criacao-card:hover {
+    border-color: #CC7C1B;
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.tipo-criacao-card.active {
+    border-color: #CC7C1B;
+    background-color: #fff9f0;
+}
+
+.tipo-criacao-card .card-body {
+    padding: 2rem 1rem;
+}
+
+/* Garantir que o cursor seja pointer em todos os elementos clicáveis */
+.tipo-criacao-card,
+.tipo-criacao-card * {
+    cursor: pointer;
+}
+
+/* Manter o estilo original dos outros elementos */
+.nav-btn {
+    cursor: pointer;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tipo-criacao-card .card-body {
+        padding: 1.5rem 0.5rem;
+    }
+}
+
+/* ========================================== */
+/* ESTILOS PARA CARDS CLICÁVEIS CORRIGIDOS */
+/* ========================================== */
+
+.tipo-criacao-card {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.tipo-criacao-card:hover {
+    border-color: #CC7C1B;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(204, 124, 27, 0.2);
+}
+
+.tipo-criacao-card.active {
+    border-color: #CC7C1B;
+    background: linear-gradient(135deg, #fff9f0 0%, #ffeccc 100%);
+}
+
+.tipo-criacao-card .card-body {
+    padding: 2rem 1rem;
+}
+
+/* Garantir que o cursor seja pointer em todos os elementos clicáveis */
+.tipo-criacao-card,
+.tipo-criacao-card * {
+    cursor: pointer;
+}
+
+/* Botão Criar Missas em Bloco centralizado */
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tipo-criacao-card .card-body {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Estilo para o botão de remover todas */
+.btn-outline-danger {
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: translateY(-1px);
+}

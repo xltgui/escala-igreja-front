@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Reset da tela */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilização do retangulo no centro da telaa */
+
+body {
+  margin: 0;
+  height: 100vh;
+  /* altura total da tela */
+  display: flex;
+  justify-content: center;
+  /* centraliza horizontalmente */
+  align-items: center;
+  /* centraliza verticalmente */
+  background-color: rgb(235, 235, 235);
+}
+
+.retangulo {
+  width: 973px;
+  height: 534px;
+  display: flex;
+  /* divide em colunas */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+   background-color: #FFFFFF;
+  /* evita que algo vaze fora dos cantos arredondados */
+}
+
+/* lado esquerdo - 30% */
+.retangulo-esquerda {
+  width: 30%;
+  background-color: #CC7C1B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  /* espaço interno pro texto não colar */
+}
+
+.titulo_retangulo { 
+  font-family: "Inter", sans-serif; 
+  font-weight: 900; color: white; 
+  font-size: 32px; line-height: 1.5; }
+
+.retangulo-direita {
+  width: 70%;
+  background-color: #FFFFFF;
+
+  display: flex;
+  flex-direction: column;   /* coloca logo e login um embaixo do outro */
+  align-items: center;      /* centraliza no eixo horizontal */
+  justify-content: flex-start;
+}
+
+.imagem_logo {
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagem_logo_igreja {
+  width: 166px;
+  height: 166px;
+}
+
+.login-container {
+  margin-top: 31px;   /* espaço entre logo e formulário */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 500px;
+  align-items: center; /* centraliza botão e inputs */
+}
+
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #d9d9d9;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 16px;
+  width: 397px;
+}
+
+.input-group i {
+  color: #333;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.input-group i:hover {
+  color: #000000;
+}
+
+.btn {
+  background: #b66511;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  border-radius: 0.5em;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #994f0e;
+}

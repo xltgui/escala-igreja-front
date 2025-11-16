@@ -1,0 +1,74 @@
+
+<body>
+  <div class="retangulo">
+  <div class="retangulo-esquerda">
+    <p class="titulo_retangulo">Olá! Ficamos felizes em ver você novamente!</p>
+  </div>
+
+  <div class="retangulo-direita">
+    <div class="imagem_logo">
+      <!-- Mantenha o caminho da imagem atualizado ou use um asset do Angular -->
+      <img class="imagem_logo_igreja" src="./img/Logo_Igreja.png" alt="Logo da Igreja">
+    </div>
+
+    <!-- Formulário de login: Substituí a tag <form> original pelas diretivas do Angular -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-container">
+      
+      <!-- Mensagem de Erro (após o login falhar) -->
+      <div *ngIf="errorMessage" class="alert alert-danger mb-3" role="alert">
+          {{ errorMessage }}
+      </div>
+
+      <!-- Campo Email/Username -->
+      <div class="input-group">
+        <input 
+          type="email" 
+          formControlName="username" 
+          placeholder="Email" 
+          required
+          [class.is-invalid]="f['username'].invalid && f['username'].touched"
+        >
+        <!-- Ícone Font Awesome -->
+        <i class="fa-regular fa-user"></i>
+      </div>
+      <!-- Feedback de validação (opcional) -->
+      <div *ngIf="f['username'].invalid && f['username'].touched" class="invalid-feedback d-block mb-3">
+          <div *ngIf="f['username'].errors?.['required']">O email é obrigatório.</div>
+          <div *ngIf="f['username'].errors?.['email']">O formato do email é inválido.</div>
+      </div>
+      
+      <!-- Campo Senha -->
+      <div class="input-group">
+        <input 
+          [type]="isPasswordVisible ? 'text' : 'password'" 
+          formControlName="password" 
+          placeholder="Senha" 
+          required
+          [class.is-invalid]="f['password'].invalid && f['password'].touched"
+        >
+        <!-- Ícone de Olho - Adiciona (click) para alternar a visibilidade -->
+        <i 
+          class="fa-regular" 
+          [ngClass]="{'fa-eye': !isPasswordVisible, 'fa-eye-slash': isPasswordVisible}"
+          (click)="togglePasswordVisibility()"
+        ></i>
+      </div>
+      <div *ngIf="f['password'].invalid && f['password'].touched" class="invalid-feedback d-block mb-3">
+          <div *ngIf="f['password'].errors?.['required']">A senha é obrigatória.</div>
+      </div>
+
+      <!-- Botão Entrar -->
+      <button 
+        type="submit" 
+        class="btn btn-primary" 
+        [disabled]="loginForm.invalid || isLoading"
+      >
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        {{ isLoading ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+    
+    <p class="text-center mt-3 text-muted">Ainda não tem cadastro? Entre em contato com o administrador.</p>
+  </div>
+</div>
+</body>
