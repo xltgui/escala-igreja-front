@@ -11,6 +11,7 @@ import {
 } from './schedule-model'
 import { ScheduleService } from '../services/schedule-service';
 import { LiturgicalServerService } from '../cadastro-usuario-component/liturgical-server-service';
+import { AuthService } from '../services/auth-service';
 
 @Component({
   selector: 'app-criacao-missa-component',
@@ -48,7 +49,8 @@ export class CriacaoMissaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private scheduleService: ScheduleService,
-    private liturgicalServerService: LiturgicalServerService
+    private liturgicalServerService: LiturgicalServerService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,12 @@ export class CriacaoMissaComponent implements OnInit {
     this.loadEscalaItems();
     this.carregarHistoricoMissas();
   }
+
+
+  isAdmin(): boolean {
+    return this.authService.hasRole('ADMIN')
+  }
+
 
   // ============== Inicialização ==============
 

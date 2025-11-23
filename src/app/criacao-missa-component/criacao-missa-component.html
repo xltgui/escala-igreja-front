@@ -1,5 +1,5 @@
 <!-- Seleção do Tipo de Criação -->
-<section class="tipo-criacao-section mb-4" *ngIf="showSelection">
+<section class="tipo-criacao-section mb-4" *ngIf="showSelection && isAdmin()" >
     <div class="card">
         <div class="card-body">
             <h3 class="section-title mb-4">Como deseja criar as missas?</h3>
@@ -274,7 +274,7 @@
         </section>
 
 <!-- Histórico de Missas -->
-<section class="historico-section">
+<section class="historico-section" *ngIf="isAdmin()">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="section-title">Histórico de Missas Criadas</h2>
         <div>

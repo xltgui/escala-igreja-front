@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LiturgicalServerService } from './liturgical-server-service';
 import { LiturgicalServerRequest, LiturgicalServerResponse, LiturgicalServersRole } from './liturgical-server-model';
+import { AuthService } from '../services/auth-service';
 
 @Component({
   selector: 'app-cadastro-usuario-component',
@@ -30,7 +31,8 @@ export class CadastroUsuarioComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private liturgicalServerService: LiturgicalServerService
+    private liturgicalServerService: LiturgicalServerService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -184,5 +186,9 @@ export class CadastroUsuarioComponent implements OnInit {
   // Método para obter o título do formulário
   getTituloFormulario(): string {
     return this.isEditing ? 'Editar Servidor Litúrgico' : 'Cadastro de Servidor Litúrgico';
+  }
+
+  isAdmin(): boolean {
+    return this.authService.hasRole('ADMIN')
   }
 }

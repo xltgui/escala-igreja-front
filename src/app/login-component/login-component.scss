@@ -70,6 +70,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(img/Logo_Igreja.png);
+  background-size: contain;        /* ✅ Faz a imagem caber na div */
+  background-repeat: no-repeat;    /* ✅ Evita repetição */
+  background-position: center;     /* ✅ Centraliza a imagem */
+  width: 166px;                    /* ✅ Define largura */
+  height: 166px;                   /* ✅ Define altura */
 }
 
 .imagem_logo_igreja {

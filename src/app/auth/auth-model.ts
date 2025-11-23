@@ -7,6 +7,10 @@ export interface LoginRequest {
 export interface LoginResponse {
   token: string;
   userId: number;
-  roles: string[]; // Ex: ['ADMIN', 'ACOLITO']
-  // ... outros dados úteis
+  loggedUser: LoggedUser
+}
+
+export interface LoggedUser{
+    username: string;
+    roles: string[];
 }

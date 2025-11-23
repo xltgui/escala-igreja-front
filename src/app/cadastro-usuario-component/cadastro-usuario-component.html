@@ -1,5 +1,5 @@
 <!-- Formulário de Cadastro -->
-<section class="cadastro-section mb-5">
+<section class="cadastro-section mb-5" *ngIf="isAdmin()">
     <h2 class="section-title">{{ getTituloFormulario() }}</h2>
     <div class="card">
         <div class="card-body">
